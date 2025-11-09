@@ -177,9 +177,17 @@ object Parser {
       * @return
       */
 
-    def p_space:Parser[PEnv, LToken] = item // fixme
-    
-    def p_spaces:Parser[PEnv, List[LToken]] = many(item) // fixme
+    // one whitespace token
+    def p_space: Parser[PEnv, LToken] =
+        sat((ltoken: LToken) => ltoken match {
+            case WhiteSpace(_, _) => true
+            case _                => false
+  })
+
+    // zero or more whitespace tokens
+    def p_spaces: Parser[PEnv, List[LToken]] =
+        many(p_space)
+
 
     /** Lab 1 Task 1.1 end */
 
