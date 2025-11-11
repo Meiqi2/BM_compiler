@@ -1,4 +1,4 @@
- tpackage sutd.compiler.simp.ir
+package sutd.compiler.simp.ir
 
 import sutd.compiler.simp.ir.PseudoAssembly.*
 import sutd.compiler.simp.ir.CFG.*

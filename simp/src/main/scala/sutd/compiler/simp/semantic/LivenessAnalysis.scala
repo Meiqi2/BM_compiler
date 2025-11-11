@@ -31,9 +31,12 @@ object LivenessAnalysis {
       * @param succs, abstract states coming from the successors
       * @return
       */
-    // Task 2.1 
-    def join(succs:List[AbstractState]):AbstractState = Set() // TODO: fixme 
-        // no succs means AbstractState = Set(), last label
+    // Task 2.1
+    def join(succs:List[AbstractState]):AbstractState = {
+        // For power set lattice, join (⊔) is union (∪)
+        // Liveness analysis is backward, so we merge states from successors
+        succs.foldLeft(Set():AbstractState)((acc, s) => acc union s)
+    }
 
     
     type MonotoneFunction = AbstractEnv => Either[String, AbstractEnv]
@@ -75,11 +78,32 @@ object LivenessAnalysis {
               /**
                 * case l: t <- src1 op src2:  s_l = join(s_l) - {t} \cup vars(src1) \cup vars(src2)
                 */
-              // Task 2.2 
-              // TODO Fix me: Some of the cases are missing here. 
+              // Task 2.2
+              case (label, IPlus(Temp(AVar(t)), src1, src2)) => {
+                val joined_succs_states = joinSuccStates(label, acc)
+                Right(acc + (label -> (joined_succs_states - t union vars(src1).toSet union vars(src2).toSet)))
+              }
 
+              case (label, IMinus(Temp(AVar(t)), src1, src2)) => {
+                val joined_succs_states = joinSuccStates(label, acc)
+                Right(acc + (label -> (joined_succs_states - t union vars(src1).toSet union vars(src2).toSet)))
+              }
 
-              
+              case (label, IMult(Temp(AVar(t)), src1, src2)) => {
+                val joined_succs_states = joinSuccStates(label, acc)
+                Right(acc + (label -> (joined_succs_states - t union vars(src1).toSet union vars(src2).toSet)))
+              }
+
+              case (label, IDEqual(Temp(AVar(t)), src1, src2)) => {
+                val joined_succs_states = joinSuccStates(label, acc)
+                Right(acc + (label -> (joined_succs_states - t union vars(src1).toSet union vars(src2).toSet)))
+              }
+
+              case (label, ILThan(Temp(AVar(t)), src1, src2)) => {
+                val joined_succs_states = joinSuccStates(label, acc)
+                Right(acc + (label -> (joined_succs_states - t union vars(src1).toSet union vars(src2).toSet)))
+              }
+
               /**
                 * case l:r <- src:   s_l = join(s_l) \cup vars(src)
                 */
