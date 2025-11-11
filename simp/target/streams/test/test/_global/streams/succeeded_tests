@@ -1,6 +1,7 @@
 #Successful Tests
-#Tue Nov 11 12:46:04 GMT+08:00 2025
+#Tue Nov 11 13:07:13 GMT+08:00 2025
 sutd.compiler.simp.TestLexer=1762693900205
 sutd.compiler.simp.TestMMUpDown=1762836364494
 sutd.compiler.simp.TestParser=1762836350621
-sutd.compiler.simp.TestTypeInf=1762834936187
+sutd.compiler.simp.TestSimpInt=1762837604667
+sutd.compiler.simp.TestTypeInf=1762837633684

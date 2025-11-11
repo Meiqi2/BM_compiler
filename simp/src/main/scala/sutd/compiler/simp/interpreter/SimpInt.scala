@@ -45,12 +45,16 @@ object SimpInt {
         c3 <- multConst(c1,c2)
       } yield c3
       case Plus(e1, e2) => for {
-        c1 <- evalExp(dlt, e1) 
+        c1 <- evalExp(dlt, e1)
         c2 <- evalExp(dlt, e2)
         c3 <- plusConst(c1,c2)
       } yield c3
       // Lab 2 Task 1.1
-      case _ => Left("TODO") // fixme
+      case VarExp(v) => dlt.get(v) match {
+        case Some(c) => Right(c)
+        case None => Left(s"undefined variable ${v.name}.")
+      }
+      case ParenExp(e) => evalExp(dlt, e)
       // Lab 2 Task 1.1 end
     }
 
@@ -70,9 +74,12 @@ object SimpInt {
     
     given evalMany[A](using i:Evaluable[A]):Evaluable[List[A]] = new Evaluable[List[A]] {
       def eval(dlt:Delta, ss:List[A]):Either[ErrMsg, Delta] = ss match {
-        case Nil => Right(dlt) 
-        // Lab 2 Task 1.2 
-        case _ => Left("TODO") // fixme
+        case Nil => Right(dlt)
+        // Lab 2 Task 1.2
+        case s::rest => for {
+          dlt1 <- i.eval(dlt, s)
+          dlt2 <- eval(dlt1, rest)
+        } yield dlt2
         // Lab 2 Task 1.2 end
       }
     }
@@ -88,12 +95,22 @@ object SimpInt {
           dlt_2 <- c match {
             case IntConst(_) => Left("int expression found in the if condition position.")
             case BoolConst(b) if b => evalMany.eval(dlt, th)
-            case BoolConst(b)      => evalMany.eval(dlt, el)  
+            case BoolConst(b)      => evalMany.eval(dlt, el)
           }
         } yield dlt_2
         case Ret(x) => Right(dlt)
-        // Lab 2 Task 1.2 
-        case _ => Left("TODO") // fixme
+        // Lab 2 Task 1.2
+        case While(cond, body) => for {
+          c     <- evalExp(dlt, cond)
+          dlt_2 <- c match {
+            case IntConst(_) => Left("int expression found in the while condition position.")
+            case BoolConst(b) if b => for {
+              dlt1 <- evalMany.eval(dlt, body)
+              dlt2 <- eval(dlt1, While(cond, body))
+            } yield dlt2
+            case BoolConst(b) => Right(dlt)
+          }
+        } yield dlt_2
         // Lab 2 Task 1.2 end
       }
 
