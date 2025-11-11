@@ -40,7 +40,7 @@ object MMUpDown {
          GE((e)) |- (up_e, down_e)
         */ 
         case ParenExp(e) => genExp(e)
-        // Lab 1 Task 2.1 
+        // Lab 1 Task 2.1
         /*
          GE(e1) |- (up_e1, down_e1)
          GE(e2) |- (up_e2, down_e2)
@@ -48,8 +48,52 @@ object MMUpDown {
          L is a fresh label
         --------------------------------------------------------------------- (Op)
          GE(e1 op e2) |- (X, down_e1 ++ down_e2 ++ [L:X <- up_e1 op up_e2])
-         */ 
-        case _ =>  me.pure((IntLit(1), Nil)) // fixme
+         */
+        case Plus(e1, e2) => for {
+            (up_e1, down_e1) <- genExp(e1)
+            (up_e2, down_e2) <- genExp(e2)
+            x                <- newTemp
+            lbl              <- newLabel
+        } yield {
+            val instr = IPlus(x, up_e1, up_e2)
+            (x, down_e1 ++ down_e2 ++ List((lbl, instr)))
+        }
+        case Minus(e1, e2) => for {
+            (up_e1, down_e1) <- genExp(e1)
+            (up_e2, down_e2) <- genExp(e2)
+            x                <- newTemp
+            lbl              <- newLabel
+        } yield {
+            val instr = IMinus(x, up_e1, up_e2)
+            (x, down_e1 ++ down_e2 ++ List((lbl, instr)))
+        }
+        case Mult(e1, e2) => for {
+            (up_e1, down_e1) <- genExp(e1)
+            (up_e2, down_e2) <- genExp(e2)
+            x                <- newTemp
+            lbl              <- newLabel
+        } yield {
+            val instr = IMult(x, up_e1, up_e2)
+            (x, down_e1 ++ down_e2 ++ List((lbl, instr)))
+        }
+        case DEqual(e1, e2) => for {
+            (up_e1, down_e1) <- genExp(e1)
+            (up_e2, down_e2) <- genExp(e2)
+            x                <- newTemp
+            lbl              <- newLabel
+        } yield {
+            val instr = IDEqual(x, up_e1, up_e2)
+            (x, down_e1 ++ down_e2 ++ List((lbl, instr)))
+        }
+        case LThan(e1, e2) => for {
+            (up_e1, down_e1) <- genExp(e1)
+            (up_e2, down_e2) <- genExp(e2)
+            x                <- newTemp
+            lbl              <- newLabel
+        } yield {
+            val instr = ILThan(x, up_e1, up_e2)
+            (x, down_e1 ++ down_e2 ++ List((lbl, instr)))
+        }
         // Lab 1 Task 2.1 end
     }
 
@@ -120,23 +164,32 @@ object MMUpDown {
             instrs2a         = instrs2 ++ List((lblEThen, IGoto(lblEIf)))
             instrs3a         = instrs3 ++ List((lblEElse, IGoto(lblEIf)))
         } yield cond_d ++ instrs1 ++ instrs2a ++ instrs3a
-        // Lab 1 Task 2.2 
+        // Lab 1 Task 2.2
         /*
-        LBWhile is the next label (w/o incr) 
+        LBWhile is the next label (w/o incr)
         GE(cond) |- (up_cond, down_cond)
 
         LWhileCondJ is a fresh label
-        G(body) |- instrs2 
+        G(body) |- instrs2
         LEndBody is a fresh label
-        
+
         LEndWhile is the next label (w/o incr)
 
-        instrs1 = [LWhileCondJ: ifn up_cond goto LEndWhile] 
+        instrs1 = [LWhileCondJ: ifn up_cond goto LEndWhile]
         instrs2' = instrs2 ++ [ LEndBody: goto LBWhile ]
         --------------------------------------------------------- (While)
         G(while cond {body}) |- down_cond ++ instrs1 ++ instrs2'
         */
-        case _ => StateT{ st => Identity((st, List())) }  // fixme
+        case While(cond, body) => for {
+            lblBWhile        <- chkNextLabel
+            (cond_u, cond_d) <- genExp(cond)
+            lblWhileCondJ    <- newLabel
+            instrs2          <- cogen(body)
+            lblEndBody       <- newLabel
+            lblEndWhile      <- chkNextLabel
+            instrs1          = List((lblWhileCondJ, IIfNot(cond_u, lblEndWhile)))
+            instrs2a         = instrs2 ++ List((lblEndBody, IGoto(lblBWhile)))
+        } yield cond_d ++ instrs1 ++ instrs2a
         // Lab 1 Task 2.2 end
     }
 

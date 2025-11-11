@@ -1,26 +1,23 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestParser, org.scalatest.tools.Framework$$anon$1@4a4793ef, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mTestParser:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: parsing 0 spaces[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: parsing 3 spaces[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: parsing 3 tabs[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: should not parse id[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test p_exp: parsing x + 1[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test p_exp: parsing x - (1 + (y * 2))[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test parser: parsing y = 1; x = x + 1;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test parser: parsing [0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mx = input;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32ms = 0;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mc = 0;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mwhile c < x {[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m    s = c + s;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m    c = c + 1;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m}[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mreturn s;[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m        [0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 150 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 8[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestMMUpDown, org.scalatest.tools.Framework$$anon$1@3dcd5afe, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestMMUpDown:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2 genExp: y + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2 genExp: (x + 3) * (y - 5)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2: y = 1; x = y + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2: z = (x + 3) * (y - 5); return z[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    x = 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    y = 10[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    i = 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    while (i < y) {[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        x = x + i[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        i = i + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    }[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    return x[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 154 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 5[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 8, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 5, failed 0, canceled 0, ignored 0, pending 0[0m[0m
 [0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
 [0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestParser[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestMMUpDown[0m
