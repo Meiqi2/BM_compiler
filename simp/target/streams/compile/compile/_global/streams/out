@@ -1,6 +1,6 @@
 [0m[[0m[33mwarn[0m] [0m[0mOption -Yresolve-term-conflict is deprecated: Use -Xresolve-term-conflict instead.[0m
-[0m[[0m[33mwarn[0m] [0m[0m[33m[33m-- Warning: /Users/maggie/BM_compiler/simp/src/main/scala/sutd/compiler/simp/interpreter/SimpInt.scala:75:18 [0m[0m[0m
-[0m[[0m[33mwarn[0m] [0m[0m[33m75 |[0m    [33mgiven[0m [36mevalMany[0m[[35mA[0m](using [36mi[0m:[35mEvaluable[0m[[35mA[0m]):[35mEvaluable[0m[[35mList[0m[[35mA[0m]] = [33mnew[0m [35mEvaluable[0m[[35mList[0m[[35mA[0m]] {[0m
-[0m[[0m[33mwarn[0m] [0m[0m[33m[33m   |[0m                  ^[0m[0m
-[0m[[0m[33mwarn[0m] [0m[0m[33m   |[0m   This old given syntax is no longer supported; use `=>` instead of `:`[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m-- Warning: /Users/maggie/BM_compiler/simp/src/main/scala/sutd/compiler/simp/ir/SSA.scala:497:21 [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m497 |[0m    [33mgiven[0m [36moprOrdering[0m(using [36mso[0m:[35mOrdering[0m[[35mString[0m]):[35mOrdering[0m[[35mOpr[0m] = [33mnew[0m [35mOrdering[0m[[35mOpr[0m] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m    |[0m                     ^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m    |[0m This old given syntax is no longer supported; use `=>` instead of `:`[0m
 [0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

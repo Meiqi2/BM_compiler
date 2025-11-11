@@ -1,21 +1,12 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestTypeInf, org.scalatest.tools.Framework$$anon$1@2e617653, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mTestTypeInf:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution [int/a]a[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution [int/a]b[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution [int/a]bool[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution ([int/a]o[a/b])b[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification (Int,Bool) should fail.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification (Int,a) should ground a.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification {(Int,a), (a, b)} should ground b.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification {(a, b), (Int, Int) (Int,a)} should ground b.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf sum()[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf fib[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf should fail in grounding input and x's types[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf should fail in unifying int with bool[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 170 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 12[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 12, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestTypeInf[0m
+[debug] Running TaskDef(sutd.compiler.simp.TestSSA, org.scalatest.tools.Framework$$anon$1@3506ee20, false, [SuiteSelector])
+[info] TestSSA:
+[info] - testing buildSSA 1
+[info] - testing buildSSA 2
+[info] - testing buildSSA 3
+[info] Run completed in 223 milliseconds.
+[info] Total number of tests run: 3
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 3, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[debug] Passed tests:
+[debug] 	sutd.compiler.simp.TestSSA

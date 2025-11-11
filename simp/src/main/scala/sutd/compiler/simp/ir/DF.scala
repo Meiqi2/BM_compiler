@@ -1,4 +1,4 @@
-package sutd.compiler.simp.ir
+ tpackage sutd.compiler.simp.ir
 
 import sutd.compiler.simp.ir.PseudoAssembly.*
 import sutd.compiler.simp.ir.CFG.*
@@ -141,12 +141,34 @@ object DF {
 
     type DFTable = Map[Label, List[Label]] // maping label to its dominance frontier
 
-
+    /**
+      * Check if y is a descendant of x in the dominator tree
+      * (i.e., x strictly dominates y)
+      *
+      * @param y
+      * @param x
+      * @param dt
+      * @return
+      */
+    def isDescendant(y:Label, x:Label, dt:DomTree):Boolean = {
+        def getDescendants(dt:DomTree, target:Label):List[Label] = dt match {
+            case Empty => Nil
+            case Node(l, children) if l == target => {
+                def allDescendants(dt:DomTree):List[Label] = dt match {
+                    case Empty => Nil
+                    case Node(l, children) => l :: children.flatMap(allDescendants)
+                }
+                children.flatMap(allDescendants)
+            }
+            case Node(l, children) => children.flatMap(child => getDescendants(child, target))
+        }
+        getDescendants(dt, x).contains(y)
+    }
 
     /**
-      * 1. For each vertex v by traversing the dominator tree bottom up: 
+      * 1. For each vertex v by traversing the dominator tree bottom up:
       *  i. compute df_local(v, G)
-      *  ii. compute U_u\inchild(v,T) df_up(u,G), which can be looked up from the a memoization table. 
+      *  ii. compute U_u\inchild(v,T) df_up(u,G), which can be looked up from the a memoization table.
       *  iii. save df(v,G)=dflocal(v,G) union U_u\in child(v,T) in the memoizationtable.
     */
     
@@ -165,8 +187,10 @@ object DF {
     }
 
     // df local implementation from cytron's lemma 2
-    // Task 1.1 TODO 
-    def dfLocal(x:Label, dt:DomTree, g:CFG):List[Label] = Nil // TODO: fixme
+    // Task 1.1 TODO
+    def dfLocal(x:Label, dt:DomTree, g:CFG):List[Label] = {
+        successors(g, x).filter(y => !isChildOf(y, x, dt))
+    }
 
     /**
       * Build dominance frontier table 
@@ -180,9 +204,12 @@ object DF {
   
         def go(acc:DFTable, x:Label):DFTable = {
             val df_local = dfLocal(x, dt, g)
-            // Task 1.1 TODO 
-            def dfUp(u:Label):List[Label] = Nil // TODO: fixme
-            
+            // Task 1.1 TODO
+            def dfUp(u:Label):List[Label] = acc.get(u) match {
+                case Some(df) => df.filter(y => !isDescendant(y, x, dt))
+                case None => Nil
+            }
+
             val df_up = childOf(x,dt).flatMap(u => dfUp(u))
             acc + (x -> (df_local ++ df_up))
         }

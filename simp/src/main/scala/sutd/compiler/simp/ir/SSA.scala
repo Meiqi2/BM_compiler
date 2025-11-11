@@ -50,11 +50,32 @@ object SSA {
       * @return
       */
     def insertPhis(pa:List[LabeledInstr], dft:DFTable, g:CFG):P = {
-        // A list of pairs. Each pair consists of a label l and the set of variables that are modified in l 
+        // A list of pairs. Each pair consists of a label l and the set of variables that are modified in l
         val labels_modded_vars:List[(Label, List[String])] = pa.map( li => modVars(li))
         // Task 1.2 TODO
-        val e:E = Map():E // TODO: fixme
-        val pa_with_phis:List[SSALabeledInstr] = Nil // TODO: fixme 
+        // Build E environment: for each variable v modified at label l, add v to all labels in DF+(l)
+        val e:E = labels_modded_vars.foldLeft(Map():E)((acc, pair) => pair match {
+            case (label, vars) => vars.foldLeft(acc)((acc2, v) => {
+                val df_plus = dfPlus(dft, List(label))
+                df_plus.foldLeft(acc2)((acc3, l) => {
+                    val existing = acc3.getOrElse(l, Nil)
+                    acc3 + (l -> (existing ++ List(v)).distinct)
+                })
+            })
+        })
+
+        // Build pa_with_phis: for each label instruction, add phi assignments for variables in E
+        val pa_with_phis:List[SSALabeledInstr] = pa.map(li => li match {
+            case (label, instr) => {
+                val vars_need_phi = e.getOrElse(label, Nil)
+                val phis = vars_need_phi.map(v => {
+                    val preds = predecessors(g, label)
+                    val operands = preds.map(pred => (pred, AVar(v)))
+                    PhiAssignment(Temp(AVar(v)), operands, Temp(AVar(v)))
+                })
+                (label, phis, instr)
+            }
+        })
 
         val p = pa_with_phis.foldLeft(Map():P)((acc:P, li:SSALabeledInstr) => li match {
             case (l, phis, i) =>  acc + (l -> li)
