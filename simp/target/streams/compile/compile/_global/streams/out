@@ -1,2 +1,18 @@
 [0m[[0m[33mwarn[0m] [0m[0mOption -Yresolve-term-conflict is deprecated: Use -Xresolve-term-conflict instead.[0m
-[0m[[0m[33mwarn[0m] [0m[0mone warning found[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m-- Warning: /Users/maggie/BM_compiler/simp/src/main/scala/sutd/compiler/simp/semantic/TypeInf.scala:102:27 [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m102 |[0m    [33mgiven[0m [36mpairSubstitutable[0m[[35mA[0m,[35mB[0m](using [36mia[0m:[35mSubstitutable[0m[[35mA[0m])(using [36mib[0m:[35mSubstitutable[0m[[35mB[0m]):[35mSubstitutable[0m[([35mA[0m,[35mB[0m)] = [33mnew[0m [35mSubstitutable[0m[([35mA[0m,[35mB[0m)]{[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m    |[0m                           ^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m    |[0m This old given syntax is no longer supported; use `=>` instead of `:`[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m-- Warning: /Users/maggie/BM_compiler/simp/src/main/scala/sutd/compiler/simp/semantic/TypeInf.scala:116:27 [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m116 |[0m    [33mgiven[0m [36mlistSubstitutable[0m[[35mA[0m](using [36mi[0m:[35mSubstitutable[0m[[35mA[0m]):[35mSubstitutable[0m[[35mList[0m[[35mA[0m]] = [33mnew[0m [35mSubstitutable[0m[[35mList[0m[[35mA[0m]]{[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m    |[0m                           ^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m    |[0m This old given syntax is no longer supported; use `=>` instead of `:`[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m-- Warning: /Users/maggie/BM_compiler/simp/src/main/scala/sutd/compiler/simp/semantic/TypeInf.scala:131:17 [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m131 |[0m    [33mgiven[0m [36minfList[0m[[35mA[0m](using [36minfA[0m:[35mInfer[0m[[35mA[0m]):[35mInfer[0m[[35mList[0m[[35mA[0m]] = [33mnew[0m [35mInfer[0m[[35mList[0m[[35mA[0m]] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m    |[0m                 ^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m    |[0m This old given syntax is no longer supported; use `=>` instead of `:`[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m-- Warning: /Users/maggie/BM_compiler/simp/src/main/scala/sutd/compiler/simp/semantic/TypeInf.scala:245:23 [0m[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m245 |[0m    [33mgiven[0m [36mlistUnifiable[0m[[35mA[0m](using [36mu[0m:[35mUnifiable[0m[[35mA[0m])(using [36ms[0m:[35mSubstitutable[0m[[35mList[0m[[35mA[0m]]):[35mUnifiable[0m[[35mList[0m[[35mA[0m]] = [33mnew[0m [35mUnifiable[0m[[35mList[0m[[35mA[0m]] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m[33m    |[0m                       ^[0m[0m
+[0m[[0m[33mwarn[0m] [0m[0m[33m    |[0m This old given syntax is no longer supported; use `=>` instead of `:`[0m
+[0m[[0m[33mwarn[0m] [0m[0m5 warnings found[0m
