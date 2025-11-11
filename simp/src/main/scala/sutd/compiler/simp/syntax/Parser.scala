@@ -192,13 +192,98 @@ object Parser {
     /** Lab 1 Task 1.1 end */
 
 
-    /** Lab 1 Task 1.2 
+    /** Lab 1 Task 1.2
       * Parsing an expression
-      * Note that 
+      * Note that
       *   E ::= E Op E | X | C | (E) contains left recursion
+      *
+      * Left-recursion elimination:
+      *   E ::= T E'
+      *   E' ::= Op T E' | ε
+      *   T ::= X | C | (E)
       * @return
       */
-    def p_exp:Parser[PEnv, Exp] = empty(ConstExp(IntConst(1))) // fixme
+    def p_exp:Parser[PEnv, Exp] = for {
+        t <- p_term
+        _ <- p_spaces
+        rest <- p_exp_prime
+    } yield build_exp(t, rest)
+
+    /**
+      * Parsing a term (base expression)
+      * T ::= X | C | (E)
+      */
+    def p_term:Parser[PEnv, Exp] = choice(choice(p_var_exp)(p_const_exp))(p_paren_exp)
+
+    /**
+      * Parsing a variable expression
+      */
+    def p_var_exp:Parser[PEnv, Exp] = for {
+        v <- p_var
+    } yield VarExp(v)
+
+    /**
+      * Parsing a constant expression
+      */
+    def p_const_exp:Parser[PEnv, Exp] = for {
+        c <- p_const
+    } yield ConstExp(c)
+
+    /**
+      * Parsing a parenthesized expression
+      */
+    def p_paren_exp:Parser[PEnv, Exp] = for {
+        _ <- p_lparen
+        _ <- p_spaces
+        e <- p_exp
+        _ <- p_spaces
+        _ <- p_rparen
+    } yield ParenExp(e)
+
+    /**
+      * Parsing expression prime (continuation)
+      * E' ::= Op T E' | ε
+      * Returns a list of (operator, term) pairs
+      */
+    def p_exp_prime:Parser[PEnv, List[(LToken, Exp)]] = {
+        val p_one:Parser[PEnv, (LToken, Exp)] = for {
+            op <- p_op
+            _ <- p_spaces
+            t <- p_term
+            _ <- p_spaces
+        } yield (op, t)
+        many(p_one)
+    }
+
+    /**
+      * Parsing an operator
+      */
+    def p_op:Parser[PEnv, LToken] = {
+        choice(p_plus)(
+            choice(p_minus)(
+                choice(p_mult)(
+                    choice(p_lthan)(p_dequal)
+                )
+            )
+        )
+    }
+
+    /**
+      * Build expression from term and list of (operator, term) pairs
+      * Applies left-associativity
+      */
+    def build_exp(init:Exp, rest:List[(LToken, Exp)]):Exp = rest.foldLeft(init){
+        case (acc, (op, t)) =>
+            op match {
+                case PlusSign(_) => Plus(acc, t)
+                case MinusSign(_) => Minus(acc, t)
+                case AsterixSign(_) => Mult(acc, t)
+                case LThanSign(_) => LThan(acc, t)
+                case DEqSign(_) => DEqual(acc, t)
+                case _ => acc // should not happen
+            }
+    }
+
     /** Lab 1 Task 1.2 end */
     
     /**

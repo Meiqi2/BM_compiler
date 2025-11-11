@@ -179,7 +179,7 @@ return s;
             Ret(Var("s")))
         Parsec.run(parse)(PEnv(input)) match {
             case Consumed(Ok((stmts, penv))) if done(penv) => {
-                assert(stmts == expected)
+                assert(stmts == expected, s"Expected: $expected\nGot: $stmts\n")
             }
             case others => {
                 assert(false)
