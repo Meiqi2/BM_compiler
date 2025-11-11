@@ -1,0 +1,135 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestTypeInf, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestMMUpDown, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestSignAnalysis, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestLexer, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestLivenessAnalysis, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestMaximalMunch, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestSSA, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestParser, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestLivenessAnalysis:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Liveness Analysis with simple ex[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Liveness Analysis with sum()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Liveness Analysis with notes example[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Liveness Analysis with fib()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestMMUpDown:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2 genExp: y + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2 genExp: (x + 3) * (y - 5)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2: y = 1; x = y + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2: z = (x + 3) * (y - 5); return z[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch v2:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    x = 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    y = 10[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    i = 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    while (i < y) {[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        x = x + i[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        i = i + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    }[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    return x[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestTypeInf:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution [int/a]a[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution [int/a]b[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution [int/a]bool[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf type substitution ([int/a]o[a/b])b[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification (Int,Bool) should fail.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification (Int,a) should ground a.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification {(Int,a), (a, b)} should ground b.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf unification {(a, b), (Int, Int) (Int,a)} should ground b.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf sum()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf fib[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf should fail in grounding input and x's types[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestPAInt, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test typeinf should fail in unifying int with bool[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestCFG, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestSimpInt, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(sutd.compiler.simp.TestDF, org.scalatest.tools.Framework$$anon$1@e20d3ff, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestSignAnalysis:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Sign Analysis with sum()[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test Sign Analysis with descending subraction[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestParser:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: parsing 0 spaces[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestMaximalMunch:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: parsing 3 spaces[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: parsing 3 tabs[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch: y = 1; x = y + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test p_spaces: should not parse id[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test p_exp: parsing x + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test p_exp: parsing x - (1 + (y * 2))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestLexer:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test lexer: lexing y = 1; x = x + 1; [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test lexer: lexing y = input; [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test lexer: lexing [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            x = input;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            s = 0;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            c = 0;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            while c < x {[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m                s = c + s;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m                c = c + 1;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            }[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            return s;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m            [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch: z = (x + 3) * (y - 5); return z[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test parser: parsing y = 1; x = x + 1;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test parser: parsing [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mx = input;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32ms = 0;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mc = 0;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mwhile c < x {[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    s = c + s;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    c = c + 1;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m}[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mreturn s;[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test maximal munch:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    x = 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    y = 10[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    i = 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    while (i < y) {[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        x = x + i[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m        i = i + 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    }[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    return x[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m    [0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestSSA:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildSSA 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildSSA 2[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildSSA 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestCFG:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildCFG 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildCFG 2[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildCFG 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestPAInt:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test PA interpretor with sum(3)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test PA interpretor with fib(4)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test PA interpretor with with sum((0 to 10).map(fib(_)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestSimpInt:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test simp evalExp with c + s[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test simp evalExp with c < (s * 2)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test simp interpretor with sum(3)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test simp interpretor with fib(4)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test simp interpretor with sum((0 to 10).map(fib(_)))[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mTestDF:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildDomTree 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildDomTree 2[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- testing buildDomTree 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test buildDFT 1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test buildDFT 2[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- test buildDFT 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 188 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 57[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 12, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 57, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestMaximalMunch[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestDF[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestSignAnalysis[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestTypeInf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestLexer[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestSSA[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestMMUpDown[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestLivenessAnalysis[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestCFG[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestPAInt[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestParser[0m
+[0m[[0m[0mdebug[0m] [0m[0m	sutd.compiler.simp.TestSimpInt[0m

@@ -1,0 +1,10 @@
+[debug] Including from cache: asm-9.6.jar
+[debug] Including from cache: scalactic_3-3.2.10.jar
+[debug] Including from cache: scala3-library_3-3.7.2.jar
+[debug] Including from cache: scala-library-2.13.16.jar
+[debug] Calculate mappings...
+[debug] Checking every *.class/*.jar file's SHA-1.
+[debug] Merging files...
+[debug] Merging 'META-INF/MANIFEST.MF' with strategy 'discard'
+[info] Strategy 'discard' was applied to a file (Run the task at debug level to see details)
+[info] Assembly up to date: /Users/maggie/BM_compiler/simp/target/scala-3.7.2/simp_all.jar

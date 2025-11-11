@@ -255,26 +255,48 @@ object JVM {
         }
         
         // TODO Task 3
-        // TODO this case is missing 
+        // TODO this case is missing
         /**
-            * 
+            *
             *         L |- l => jis0    M |- s1 => jis1  M |- s2 => jis2   M,L |- lis => jis3
             * (jSub) -----------------------------------------------------------------------
             *         M, L |- l : t <- s1 - s2; lis => jis0 + jis1 + jis2 + [isub, istore M(t)] + jis3
-            * 
+            *
             */
-        // YOUR CODE HERE
+        case ((l, IMinus(Temp(AVar(t)), src1, src2))::lis) => menv.get(t) match  {
+            case None => m.raiseError(s"convertInstr failed: temp variable ${t} is not mapped to any jvm local variable.")
+            case Some(jvar) => for {
+                _  <- convertLabel(lenv, l)
+                _  <- convertOpr(menv, src1)
+                _  <- convertOpr(menv, src2)
+                mv <- getMV
+                _  <- m.pure(mv.visitInsn(Opcodes.ISUB))
+                _  <- m.pure(mv.visitVarInsn(Opcodes.ISTORE, jvar))
+                _  <- convertInstr(menv, lenv, lis)
+            } yield ()
+        }
 
-        // TODO Task 3 
-        // TODO this case is missing 
+        // TODO Task 3
+        // TODO this case is missing
         /**
-            * 
+            *
             *         L |- l => jis0    M |- s1 => jis1  M |- s2 => jis2   M,L |- lis => jis3
             * (jMult) -----------------------------------------------------------------------
             *         M, L |- l : t <- s1 *s2; lis => jis0 + jis1 + jis2 + [imul, istore M(t)] + jis3
-            * 
+            *
             */
-        // YOUR CODE HERE
+        case ((l, IMult(Temp(AVar(t)), src1, src2))::lis) => menv.get(t) match  {
+            case None => m.raiseError(s"convertInstr failed: temp variable ${t} is not mapped to any jvm local variable.")
+            case Some(jvar) => for {
+                _  <- convertLabel(lenv, l)
+                _  <- convertOpr(menv, src1)
+                _  <- convertOpr(menv, src2)
+                mv <- getMV
+                _  <- m.pure(mv.visitInsn(Opcodes.IMUL))
+                _  <- m.pure(mv.visitVarInsn(Opcodes.ISTORE, jvar))
+                _  <- convertInstr(menv, lenv, lis)
+            } yield ()
+        }
         
         /**
             * 
@@ -296,15 +318,25 @@ object JVM {
         } 
 
         // TODO Task 3
-        // TODO this case is missing 
+        // TODO this case is missing
         /**
-            * 
+            *
             *         L |- l1 => jis0    M |- s1 => jis1  M |- s2 => jis2   M,L |- lis => jis3
             * (jLThan) ----------------------------------------------------------------------------------------------------
             *         M, L |- l1:t <- s1 < s2; l2: ifn t got l3; lis => jis0 + jis1 + jis2 + [if_icmpge L(l3)] + jis3
-            * 
+            *
             */
-        // YOUR CODE HERE
+        case ((l1, ILThan(Temp(AVar(t)), src1, src2))::(l2, IIfNot(Temp(AVar(t2)), l3))::lis) if t == t2 => lenv.get(l3) match {
+            case None => m.raiseError(s"convertInstr failed: label ${l3} is not mapped to jvm label.")
+            case Some(jl3) => for {
+                _  <- convertLabel(lenv, l1)
+                _  <- convertOpr(menv, src1)
+                _  <- convertOpr(menv, src2)
+                mv <- getMV
+                _  <- m.pure(mv.visitJumpInsn(Opcodes.IF_ICMPGE, jl3))
+                _  <- convertInstr(menv, lenv, lis)
+            } yield ()
+        }
 
         /**
             * 
