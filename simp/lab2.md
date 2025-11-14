@@ -39,7 +39,7 @@ Your task is to complete the implementation.
 Upon completion, you should be able to pass the two test cases for `evalExp`.
 
 ```bash
-sbt compile "testOnly sutd.compiler.simp.TestSIMPInt -- -z evalExp" 
+sbt compile "testOnly sutd.compiler.simp.TestSimpInt -- -z evalExp" 
 ```
 ### Sub Task 1.2
 
@@ -52,7 +52,7 @@ Your task is to complete the implementation of the type class instances `evalMan
 
 ##### Testing the SIMP interpreter implementation 
 
-Now you should be able to pass all test cases in `src/test/scala/sutd/compiler/simp/TestSIMPInt.scala`
+Now you should be able to pass all test cases in `src/test/scala/sutd/compiler/simp/TestSimpInt.scala`
 
 
 ## Task 2 - SIMP Type Inference
