@@ -227,8 +227,13 @@ return s;
 ```
 Running 
 ```bash
-scala jar target/scala-3.3.0/simp_3-0.0.1.jar -i fib.simp 5
+scala jar target/scala-3.7.2/simp_3-0.0.1.jar -i fib.simp 5
 ```
 
 should produce `8` as output.
 
+If your scala version is > 3.5, you should replace the above comand as 
+
+```bash
+scala_legacy jar target/scala-3.7.2/simp_3-0.0.1.jar -i fib.simp 5
+```
