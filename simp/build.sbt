@@ -29,3 +29,5 @@ scalacOptions ++= Seq("-feature", "-deprecation", "-Yresolve-term-conflict:packa
 val jarName = "simp_all.jar"
 
 assembly/assemblyJarName := jarName
+
+Compile / mainClass := Some("sutd.compiler.simp.Main")
