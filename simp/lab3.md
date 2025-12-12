@@ -178,12 +178,13 @@ $ sbt assembly
 ```
 to generate  a mega jar (with all the jvm bytecode depenedencies and Scala run-time library)
 
-To test 
+To test, run the following with scala version >= 3.7.2
 
 ```bash
-$ scala jar target/scala-3.3.0/simp_all.jar -c examples/fib.simp 
+$ scala run -cp target/scala-3.7.2/simp_all.jar -M sutd.compiler.simp.Main -- -c examples/fib.simp 
 ```
 which prints `Compilation done.` and generate a JVM byte file, `GeneratedClass.class`
+
 
 ```bash 
 $ java GeneratedClass 5 

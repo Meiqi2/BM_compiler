@@ -17,14 +17,14 @@ import sutd.compiler.simp.monad.StateT.*
 
 object Main {
     def main(args:Array[String]):Unit = {
-        if (args.length < 3) {
+        if (args.length < 2) {
             println("""
-            USAGE: scala jar simp.jar <mode> source.simp [inputs]
-              e.g. scala jar simp.jar -i fib.simp 2
+            USAGE: scala run -cp simp.jar -M sutd.compiler.Main <mode> source.simp [inputs]
+              e.g. scala run -cp simp.jar -M sutd.compiler.Main -i fib.simp 2
             """)
         } else {
-            val flag = args(1)
-            val simpfile = args(2)
+            val flag = args(0)
+            val simpfile = args(1)
             if (flag == "-c") {
                 compile(simpfile) match {
                     case Left(error) => {
@@ -36,8 +36,8 @@ object Main {
                     }
                 }
             } else {
-                if ((flag == "-i") && (args.length >= 4)) {
-                    val input = args(3).toInt
+                if ((flag == "-i") && (args.length >= 3)) {
+                    val input = args(2).toInt
                     exec(simpfile, input) match {
                         case Left(error) => {
                             println("Error:")
@@ -48,13 +48,17 @@ object Main {
                         }
                     }
                 } else {
+                    println(args.length)
+                    for (i <- (0 to args.length - 1)) {
+                        println(args(i))
+                    }
                     println("""
                     USAGE1: interpreter 
-                        scala jar simp_all.jar -i source.simp <input>
-                    e.g. scala jar simp_all.jar -i fib.simp 2
+                        scala run -cp simp_all.jar -M sutd.compiler.simp.Main -- -i source.simp <input>
+                    e.g. scala run simp_all.jar -M sutd.compiler.simp.Main -- -i fib.simp 2
                     USAGE2: compiler
-                        scala jar simp_all.jar -c source.simp
-                    e.g. scala jar simp_all.jar -c fib.simp
+                        scala jar simp_all.jar -M sutd.compiler.simp.Main -- -c source.simp
+                    e.g. scala jar simp_all.jar -M sutd.compiler.simp.Main --  -c fib.simp
                     """)
                 }
             }
